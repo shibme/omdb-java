@@ -1,6 +1,6 @@
 package me.shib.java.omdb.models;
 
-import me.shib.java.omdb.service.StaticLibrary;
+import me.shib.java.rest.client.lib.JsonLib;
 
 public class OMDbContent {
 	
@@ -188,26 +188,34 @@ public class OMDbContent {
 	
 	public Movie getMovieObject() {
 		if(type == Type.movie) {
-			String jsonData = StaticLibrary.getJsonLib().toJson(this);
-			return StaticLibrary.getJsonLib().fromJson(jsonData, Movie.class);
+			String jsonData = JsonLib.getDefaultInstance().toJson(this);
+			return JsonLib.getDefaultInstance().fromJson(jsonData, Movie.class);
 		}
 		return null;
 	}
 	
 	public Series getSeriesObject() {
 		if(type == Type.series) {
-			String jsonData = StaticLibrary.getJsonLib().toJson(this);
-			return StaticLibrary.getJsonLib().fromJson(jsonData, Series.class);
+			String jsonData = JsonLib.getDefaultInstance().toJson(this);
+			return JsonLib.getDefaultInstance().fromJson(jsonData, Series.class);
 		}
 		return null;
 	}
 	
 	public Episode getEpisodeObject() {
 		if(type == Type.episode) {
-			String jsonData = StaticLibrary.getJsonLib().toJson(this);
-			return StaticLibrary.getJsonLib().fromJson(jsonData, Episode.class);
+			String jsonData = JsonLib.getDefaultInstance().toJson(this);
+			return JsonLib.getDefaultInstance().fromJson(jsonData, Episode.class);
 		}
 		return null;
+	}
+
+	public String getImdbID() {
+		return imdbID;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 	public Type getType() {

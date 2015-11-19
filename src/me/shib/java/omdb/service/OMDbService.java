@@ -13,7 +13,20 @@ public class OMDbService implements OMDbServiceModel {
 	private LocalCacheOMDbServices localServices;
 	
 	public OMDbService(long localCacheRenewalIntervalInMinutes, String localCacheDirectoryName) {
-		initDefaults();
+		initOMDBService(localCacheRenewalIntervalInMinutes, localCacheDirectoryName);
+	}
+	
+	public OMDbService(long localCacheRenewalIntervalInMinutes) {
+		initOMDBService(localCacheRenewalIntervalInMinutes, null);
+	}
+	
+	public OMDbService() {
+		initOMDBService(0, null);
+	}
+	
+	private void initOMDBService(long localCacheRenewalIntervalInMinutes, String localCacheDirectoryName) {
+		jsonLib = new JsonLib();
+		remoteServices = new RemoteOMDbServices(jsonLib);
 		if(localCacheRenewalIntervalInMinutes > 0) {
 			LocalCacheManager localCache = new LocalCacheManager(localCacheRenewalIntervalInMinutes, localCacheDirectoryName);
 			localServices = new LocalCacheOMDbServices(localCache, jsonLib);
@@ -21,16 +34,6 @@ public class OMDbService implements OMDbServiceModel {
 		else {
 			localServices = null;
 		}
-	}
-	
-	public OMDbService() {
-		initDefaults();
-		localServices = null;
-	}
-	
-	private void initDefaults() {
-		jsonLib = new JsonLib();
-		remoteServices = new RemoteOMDbServices(jsonLib);
 	}
 
 	public OMDbContent getContentByID(String imdbID) {
@@ -67,6 +70,10 @@ public class OMDbService implements OMDbServiceModel {
 		return remoteServices.searchContentByTitle(title);
 	}
 
+	public Season getSeasonByID(String imdbID, int seasonNumber) {
+		return getSeasonByID(imdbID, seasonNumber + "");
+	}
+
 	public Season getSeasonByID(String imdbID, String seasonNumber) {
 		Season returnableSeason = null;
 		if(localServices != null) {
@@ -77,9 +84,13 @@ public class OMDbService implements OMDbServiceModel {
 		}
 		returnableSeason = remoteServices.getSeasonByID(imdbID, seasonNumber);
 		if(localServices != null) {
-			localServices.setSeasonByID(returnableSeason);
+			localServices.setSeasonByID(imdbID, returnableSeason);
 		}
 		return returnableSeason;
+	}
+
+	public Season getSeasonByTitle(String title, int seasonNumber) {
+		return getSeasonByTitle(title, seasonNumber + "");
 	}
 
 	public Season getSeasonByTitle(String title, String seasonNumber) {
@@ -92,7 +103,7 @@ public class OMDbService implements OMDbServiceModel {
 		}
 		returnableSeason = remoteServices.getSeasonByTitle(title, seasonNumber);
 		if(localServices != null) {
-			localServices.setSeasonByTitle(returnableSeason);
+			localServices.setSeasonByTitle(title, returnableSeason);
 		}
 		return returnableSeason;
 	}
