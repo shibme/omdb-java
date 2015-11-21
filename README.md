@@ -7,7 +7,7 @@ Add to your pom.xml:
 ```xml
 <dependency>
 	<groupId>me.shib.java.lib</groupId>
-	<artifactId>rest-client-java</artifactId>
-	<version>0.3.3</version>
+	<artifactId>omdb-java</artifactId>
+	<version>1.0.1</version>
 </dependency>
 ```
