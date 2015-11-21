@@ -1,7 +1,7 @@
-package me.shib.java.omdb.models;
+package me.shib.java.lib.omdb.models;
 
-public class Series {
-	
+public class Movie {
+
 	private String imdbID;
 	private String title;
 	private String year;
@@ -86,7 +86,7 @@ public class Series {
 
 	@Override
 	public String toString() {
-		return "Series [imdbID=" + imdbID + ", title=" + title + ", year=" + year + ", rated=" + rated + ", released="
+		return "Movie [imdbID=" + imdbID + ", title=" + title + ", year=" + year + ", rated=" + rated + ", released="
 				+ released + ", runtime=" + runtime + ", genre=" + genre + ", director=" + director + ", writer="
 				+ writer + ", actors=" + actors + ", plot=" + plot + ", language=" + language + ", country=" + country
 				+ ", awards=" + awards + ", poster=" + poster + ", metascore=" + metascore + ", imdbRating="

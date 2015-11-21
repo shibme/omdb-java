@@ -1,6 +1,6 @@
-package me.shib.java.omdb.models;
+package me.shib.java.lib.omdb.models;
 
-import me.shib.java.rest.client.lib.JsonLib;
+import me.shib.java.lib.rest.client.JsonLib;
 
 public class OMDbContent {
 	

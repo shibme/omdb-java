@@ -1,8 +1,8 @@
-package me.shib.java.omdb.service;
+package me.shib.java.lib.omdb.service;
 
-import me.shib.java.omdb.models.SearchResponse;
-import me.shib.java.omdb.models.SearchResult;
-import me.shib.java.rest.client.lib.JsonLib;
+import me.shib.java.lib.omdb.models.SearchResponse;
+import me.shib.java.lib.omdb.models.SearchResult;
+import me.shib.java.lib.rest.client.JsonLib;
 
 public class IntermediateSearchResponseObject {
 	

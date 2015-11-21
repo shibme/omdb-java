@@ -1,14 +1,14 @@
-package me.shib.java.omdb.service;
+package me.shib.java.lib.omdb.service;
 
 import java.util.ArrayList;
 
-import me.shib.java.omdb.models.OMDbContent;
-import me.shib.java.omdb.models.OMDbServiceModel;
-import me.shib.java.omdb.models.SearchResult;
-import me.shib.java.omdb.models.Season;
-import me.shib.java.rest.client.lib.JsonLib;
-import me.shib.java.rest.client.lib.Parameter;
-import me.shib.java.rest.client.lib.ServiceAdapter;
+import me.shib.java.lib.omdb.models.OMDbContent;
+import me.shib.java.lib.omdb.models.OMDbServiceModel;
+import me.shib.java.lib.omdb.models.SearchResult;
+import me.shib.java.lib.omdb.models.Season;
+import me.shib.java.lib.rest.client.JsonLib;
+import me.shib.java.lib.rest.client.Parameter;
+import me.shib.java.lib.rest.client.ServiceAdapter;
 
 public class RemoteOMDbServices implements OMDbServiceModel {
 	

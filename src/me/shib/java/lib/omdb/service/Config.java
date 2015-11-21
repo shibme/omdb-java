@@ -1,4 +1,4 @@
-package me.shib.java.omdb.service;
+package me.shib.java.lib.omdb.service;
 
 public class Config {
 	

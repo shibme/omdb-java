@@ -1,12 +1,14 @@
-package me.shib.java.omdb.models;
+package me.shib.java.lib.omdb.models;
 
-public class Movie {
-
+public class Episode {
+	
 	private String imdbID;
 	private String title;
 	private String year;
 	private String rated;
 	private String released;
+	private String season;
+	private String episode;
 	private String runtime;
 	private String genre;
 	private String director;
@@ -20,6 +22,7 @@ public class Movie {
 	private String metascore;
 	private String imdbRating;
 	private String imdbVotes;
+	private String seriesID;
 	private Type type;
 	private boolean response;
 	
@@ -37,6 +40,12 @@ public class Movie {
 	}
 	public String getReleased() {
 		return released;
+	}
+	public String getSeason() {
+		return season;
+	}
+	public String getEpisode() {
+		return episode;
 	}
 	public String getRuntime() {
 		return runtime;
@@ -77,6 +86,9 @@ public class Movie {
 	public String getImdbVotes() {
 		return imdbVotes;
 	}
+	public String getSeriesID() {
+		return seriesID;
+	}
 	public Type getType() {
 		return type;
 	}
@@ -86,11 +98,12 @@ public class Movie {
 
 	@Override
 	public String toString() {
-		return "Movie [imdbID=" + imdbID + ", title=" + title + ", year=" + year + ", rated=" + rated + ", released="
-				+ released + ", runtime=" + runtime + ", genre=" + genre + ", director=" + director + ", writer="
-				+ writer + ", actors=" + actors + ", plot=" + plot + ", language=" + language + ", country=" + country
-				+ ", awards=" + awards + ", poster=" + poster + ", metascore=" + metascore + ", imdbRating="
-				+ imdbRating + ", imdbVotes=" + imdbVotes + ", type=" + type + ", response=" + response + "]";
+		return "Episode [imdbID=" + imdbID + ", title=" + title + ", year=" + year + ", rated=" + rated + ", released="
+				+ released + ", season=" + season + ", episode=" + episode + ", runtime=" + runtime + ", genre=" + genre
+				+ ", director=" + director + ", writer=" + writer + ", actors=" + actors + ", plot=" + plot
+				+ ", language=" + language + ", country=" + country + ", awards=" + awards + ", poster=" + poster
+				+ ", metascore=" + metascore + ", imdbRating=" + imdbRating + ", imdbVotes=" + imdbVotes + ", seriesID="
+				+ seriesID + ", type=" + type + ", response=" + response + "]";
 	}
 	
 }

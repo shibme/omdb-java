@@ -1,4 +1,4 @@
-package me.shib.java.omdb.models;
+package me.shib.java.lib.omdb.models;
 
 public class SearchResponse {
 	
