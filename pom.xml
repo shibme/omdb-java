@@ -1,5 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>me.shib.java.lib</groupId>
@@ -8,6 +9,7 @@
 	<name>OMDb Java API Library</name>
 	<description>A library to access OMDb API to get information on movies</description>
 	<url>https://github.com/shiblymeeran/omdb-java</url>
+	
 	<issueManagement>
 		<url>https://github.com/shiblymeeran/omdb-java/issues</url>
 		<system>GitHub Issues</system>
@@ -69,8 +71,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
-					<source />
-					<target />
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -139,6 +141,7 @@
 			</plugin>
 		</plugins>
 	</build>
+	
 	<dependencies>
 		<dependency>
 			<groupId>me.shib.java.lib</groupId>
@@ -146,4 +149,5 @@
 			<version>0.3.3</version>
 		</dependency>
 	</dependencies>
+	
 </project>
