@@ -10,12 +10,14 @@ import java.util.Date;
 
 public class LocalCacheManager {
 	
+	private static final String defaultLocalCacheDirectory = "LocalDataCacheDir";
+	
 	private File localCacheDirectory;
 	private long localCacheRenewalInterval;
 	
 	protected LocalCacheManager(long localCacheRenewalIntervalInMinutes, String localCacheDirectoryName) {
 		if((localCacheDirectoryName == null) || (localCacheDirectoryName.isEmpty())) {
-			this.localCacheDirectory = new File(Config.defaultLocalCacheDirectory);
+			this.localCacheDirectory = new File(defaultLocalCacheDirectory);
 		}
 		else {
 			this.localCacheDirectory = new File(localCacheDirectoryName);

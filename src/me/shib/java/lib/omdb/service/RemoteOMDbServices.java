@@ -12,12 +12,14 @@ import me.shib.java.lib.rest.client.ServiceAdapter;
 
 public class RemoteOMDbServices implements OMDbServiceModel {
 	
+	private static final String omdbEndpoint = "http://www.omdbapi.com";
+	
 	private JsonLib jsonLib;
 	private ServiceAdapter serviceAdapter;
 	
 	protected RemoteOMDbServices(JsonLib jsonLib) {
 		this.jsonLib = jsonLib;
-		this.serviceAdapter = new ServiceAdapter(Config.omdbEndpoint);
+		this.serviceAdapter = new ServiceAdapter(omdbEndpoint);
 	}
 	
 	private OMDbContent getOMDbContentForJson(String jsonData) {
