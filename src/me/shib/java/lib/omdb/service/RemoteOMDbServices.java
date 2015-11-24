@@ -2,11 +2,11 @@ package me.shib.java.lib.omdb.service;
 
 import java.util.ArrayList;
 
+import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.OMDbContent;
 import me.shib.java.lib.omdb.models.OMDbServiceModel;
 import me.shib.java.lib.omdb.models.SearchResult;
 import me.shib.java.lib.omdb.models.Season;
-import me.shib.java.lib.rest.client.JsonLib;
 import me.shib.java.lib.rest.client.Parameter;
 import me.shib.java.lib.rest.client.ServiceAdapter;
 

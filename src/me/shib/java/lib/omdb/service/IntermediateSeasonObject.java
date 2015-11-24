@@ -1,8 +1,8 @@
 package me.shib.java.lib.omdb.service;
 
+import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.MiniEpisode;
 import me.shib.java.lib.omdb.models.Season;
-import me.shib.java.lib.rest.client.JsonLib;
 
 public class IntermediateSeasonObject {
 	

@@ -1,10 +1,11 @@
 package me.shib.java.lib.omdb.service;
 
+import me.shib.java.lib.common.utils.JsonLib;
+import me.shib.java.lib.common.utils.LocalFileCache;
 import me.shib.java.lib.omdb.models.OMDbContent;
 import me.shib.java.lib.omdb.models.OMDbServiceModel;
 import me.shib.java.lib.omdb.models.SearchResult;
 import me.shib.java.lib.omdb.models.Season;
-import me.shib.java.lib.rest.client.JsonLib;
 
 public class OMDbService implements OMDbServiceModel {
 	
@@ -28,7 +29,7 @@ public class OMDbService implements OMDbServiceModel {
 		jsonLib = new JsonLib();
 		remoteServices = new RemoteOMDbServices(jsonLib);
 		if(localCacheRenewalIntervalInMinutes > 0) {
-			LocalCacheManager localCache = new LocalCacheManager(localCacheRenewalIntervalInMinutes, localCacheDirectoryName);
+			LocalFileCache localCache = new LocalFileCache(localCacheRenewalIntervalInMinutes, localCacheDirectoryName);
 			localServices = new LocalCacheOMDbServices(localCache, jsonLib);
 		}
 		else {

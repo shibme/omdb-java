@@ -1,17 +1,18 @@
 package me.shib.java.lib.omdb.service;
 
+import me.shib.java.lib.common.utils.JsonLib;
+import me.shib.java.lib.common.utils.LocalFileCache;
 import me.shib.java.lib.omdb.models.OMDbContent;
 import me.shib.java.lib.omdb.models.OMDbServiceModel;
 import me.shib.java.lib.omdb.models.SearchResult;
 import me.shib.java.lib.omdb.models.Season;
-import me.shib.java.lib.rest.client.JsonLib;
 
 public class LocalCacheOMDbServices implements OMDbServiceModel {
 	
 	private JsonLib jsonLib;
-	private LocalCacheManager localCache;
+	private LocalFileCache localCache;
 	
-	protected LocalCacheOMDbServices(LocalCacheManager localCache, JsonLib jsonLib) {
+	protected LocalCacheOMDbServices(LocalFileCache localCache, JsonLib jsonLib) {
 		this.localCache = localCache;
 		this.jsonLib = jsonLib;
 	}
