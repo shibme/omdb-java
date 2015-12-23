@@ -5,7 +5,7 @@
 	
 	<groupId>me.shib.java.lib</groupId>
 	<artifactId>omdb-java</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.5</version>
 	<name>OMDb Java Library</name>
 	<description>A Java library for OMDb API</description>
 	<url>https://github.com/shiblymeeran/omdb-java</url>
@@ -71,8 +71,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>1.7</source>
+					<target>1.7</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -146,7 +146,7 @@
 		<dependency>
 			<groupId>me.shib.java.lib</groupId>
 			<artifactId>rest-client-java</artifactId>
-			<version>0.3.5</version>
+			<version>0.3.7</version>
 		</dependency>
 	</dependencies>
 	
