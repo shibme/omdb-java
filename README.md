@@ -2,7 +2,7 @@
 A Java library for [OMDb API](http://www.omdbapi.com)
 
 ### Build Status ###
-[![Build Status](https://travis-ci.org/shiblymeeran/omdb-java.svg)](https://travis-ci.org/shiblymeeran/omdb-java)
+[![Build Status](https://travis-ci.org/shibme/omdb-java.svg)](https://travis-ci.org/shibme/omdb-java)
 
 ### Maven Dependency for Consumers ###
 Add to your pom.xml:
