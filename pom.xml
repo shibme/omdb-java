@@ -5,13 +5,13 @@
 	
 	<groupId>me.shib.java.lib</groupId>
 	<artifactId>omdb-java</artifactId>
-	<version>1.0.5</version>
+	<version>1.0.6</version>
 	<name>OMDb Java Library</name>
 	<description>A Java library for OMDb API</description>
-	<url>https://github.com/shiblymeeran/omdb-java</url>
+	<url>https://github.com/shibme/omdb-java</url>
 	
 	<issueManagement>
-		<url>https://github.com/shiblymeeran/omdb-java/issues</url>
+		<url>https://github.com/shibme/omdb-java/issues</url>
 		<system>GitHub Issues</system>
 	</issueManagement>
 
@@ -24,17 +24,17 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/shiblymeeran/omdb-java</url>
-		<connection>scm:git:https://github.com/shiblymeeran/omdb-java.git</connection>
-		<developerConnection>scm:git:shiblymeeran@github.com:shiblymeeran/omdb-java.git</developerConnection>
+		<url>https://github.com/shibme/omdb-java</url>
+		<connection>scm:git:https://github.com/shibme/omdb-java.git</connection>
+		<developerConnection>scm:git:shibme@github.com:shibme/omdb-java.git</developerConnection>
 	</scm>
 
 	<developers>
 		<developer>
 			<email>shibly.meeran@gmail.com</email>
 			<name>Shibly Meeran</name>
-			<url>https://github.com/shiblymeeran</url>
-			<id>shiblymeeran</id>
+			<url>https://github.com/shibme</url>
+			<id>shibme</id>
 		</developer>
 	</developers>
 
@@ -146,7 +146,7 @@
 		<dependency>
 			<groupId>me.shib.java.lib</groupId>
 			<artifactId>rest-client-java</artifactId>
-			<version>0.3.7</version>
+			<version>0.3.9</version>
 		</dependency>
 	</dependencies>
 	
