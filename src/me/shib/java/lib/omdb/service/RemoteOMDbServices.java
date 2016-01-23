@@ -1,10 +1,7 @@
 package me.shib.java.lib.omdb.service;
 
 import me.shib.java.lib.common.utils.JsonLib;
-import me.shib.java.lib.omdb.models.OMDbContent;
-import me.shib.java.lib.omdb.models.OMDbServiceModel;
-import me.shib.java.lib.omdb.models.SearchResult;
-import me.shib.java.lib.omdb.models.Season;
+import me.shib.java.lib.omdb.models.*;
 import me.shib.java.lib.rest.client.Parameter;
 import me.shib.java.lib.rest.client.ServiceAdapter;
 
@@ -55,9 +52,19 @@ public class RemoteOMDbServices implements OMDbServiceModel {
         return null;
     }
 
-    public SearchResult[] searchContentByTitle(String title) {
+    @Override
+    public SearchResult[] searchContent(String title, Type type, int year, int pageNo) {
         ArrayList<Parameter> params = new ArrayList<>();
         params.add(new Parameter("s", title));
+        if (type != null) {
+            params.add(new Parameter("type", type.toString()));
+        }
+        if (year > 0) {
+            params.add(new Parameter("y", year + ""));
+        }
+        if (pageNo > 0) {
+            params.add(new Parameter("page", pageNo + ""));
+        }
         try {
             IntermediateSearchResponseObject isr = jsonLib.fromUpperCamelCaseJson(serviceAdapter.get(null, params).getResponse(), IntermediateSearchResponseObject.class);
             if (isr != null) {

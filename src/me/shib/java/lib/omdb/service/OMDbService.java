@@ -2,10 +2,7 @@ package me.shib.java.lib.omdb.service;
 
 import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.common.utils.LocalFileCache;
-import me.shib.java.lib.omdb.models.OMDbContent;
-import me.shib.java.lib.omdb.models.OMDbServiceModel;
-import me.shib.java.lib.omdb.models.SearchResult;
-import me.shib.java.lib.omdb.models.Season;
+import me.shib.java.lib.omdb.models.*;
 
 public class OMDbService implements OMDbServiceModel {
 
@@ -66,8 +63,21 @@ public class OMDbService implements OMDbServiceModel {
         return returnableContent;
     }
 
-    public SearchResult[] searchContentByTitle(String title) {
-        return remoteServices.searchContentByTitle(title);
+    @Override
+    public SearchResult[] searchContent(String title, Type type, int year, int pageNo) {
+        return remoteServices.searchContent(title, type, year, pageNo);
+    }
+
+    public SearchResult[] searchContent(String title, Type type, int year) {
+        return searchContent(title, type, year, 0);
+    }
+
+    public SearchResult[] searchContent(String title, Type type) {
+        return searchContent(title, type, 0);
+    }
+
+    public SearchResult[] searchContent(String title) {
+        return searchContent(title, null);
     }
 
     public Season getSeasonByID(String imdbID, int seasonNumber) {

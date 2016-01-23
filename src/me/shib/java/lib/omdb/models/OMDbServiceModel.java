@@ -6,7 +6,7 @@ public interface OMDbServiceModel {
 
     public OMDbContent getContentByTitle(String title);
 
-    public SearchResult[] searchContentByTitle(String title);
+    public SearchResult[] searchContent(String title, Type type, int year, int pageNo);
 
     public Season getSeasonByID(String imdbID, String seasonNumber);
 
