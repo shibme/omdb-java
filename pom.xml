@@ -5,7 +5,7 @@
 	
 	<groupId>me.shib.java.lib</groupId>
 	<artifactId>omdb-java</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<name>OMDb Java Library</name>
 	<description>A Java library for OMDb API</description>
 	<url>https://github.com/shibme/omdb-java</url>

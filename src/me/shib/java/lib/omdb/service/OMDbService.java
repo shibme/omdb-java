@@ -37,7 +37,7 @@ public class OMDbService implements OMDbServiceModel {
     }
 
     public OMDbContent getContentByID(String imdbID) {
-        OMDbContent returnableContent = null;
+        OMDbContent returnableContent;
         if (localServices != null) {
             returnableContent = localServices.getContentByID(imdbID);
             if (returnableContent != null) {
@@ -52,7 +52,7 @@ public class OMDbService implements OMDbServiceModel {
     }
 
     public OMDbContent getContentByTitle(String title) {
-        OMDbContent returnableContent = null;
+        OMDbContent returnableContent;
         if (localServices != null) {
             returnableContent = localServices.getContentByTitle(title);
             if (returnableContent != null) {
@@ -75,7 +75,7 @@ public class OMDbService implements OMDbServiceModel {
     }
 
     public Season getSeasonByID(String imdbID, String seasonNumber) {
-        Season returnableSeason = null;
+        Season returnableSeason;
         if (localServices != null) {
             returnableSeason = localServices.getSeasonByID(imdbID, seasonNumber);
             if (returnableSeason != null) {
@@ -94,7 +94,7 @@ public class OMDbService implements OMDbServiceModel {
     }
 
     public Season getSeasonByTitle(String title, String seasonNumber) {
-        Season returnableSeason = null;
+        Season returnableSeason;
         if (localServices != null) {
             returnableSeason = localServices.getSeasonByTitle(title, seasonNumber);
             if (returnableSeason != null) {

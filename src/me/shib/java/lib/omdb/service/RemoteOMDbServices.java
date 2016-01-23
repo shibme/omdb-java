@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class RemoteOMDbServices implements OMDbServiceModel {
 
-    private static final String omdbEndpoint = "http://www.omdbapi.com";
+    private static final String omdbEndpoint = "http://www.omdbapi.com/";
 
     private JsonLib jsonLib;
     private ServiceAdapter serviceAdapter;
@@ -36,7 +36,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public OMDbContent getContentByID(String imdbID) {
-        ArrayList<Parameter> params = new ArrayList<Parameter>();
+        ArrayList<Parameter> params = new ArrayList<>();
         params.add(new Parameter("i", imdbID));
         try {
             return getOMDbContentForJson(serviceAdapter.get(null, params).getResponse());
@@ -46,7 +46,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public OMDbContent getContentByTitle(String title) {
-        ArrayList<Parameter> params = new ArrayList<Parameter>();
+        ArrayList<Parameter> params = new ArrayList<>();
         params.add(new Parameter("t", title));
         try {
             return getOMDbContentForJson(serviceAdapter.get(null, params).getResponse());
@@ -56,7 +56,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public SearchResult[] searchContentByTitle(String title) {
-        ArrayList<Parameter> params = new ArrayList<Parameter>();
+        ArrayList<Parameter> params = new ArrayList<>();
         params.add(new Parameter("s", title));
         try {
             IntermediateSearchResponseObject isr = jsonLib.fromUpperCamelCaseJson(serviceAdapter.get(null, params).getResponse(), IntermediateSearchResponseObject.class);
@@ -69,7 +69,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public Season getSeasonByID(String imdbID, String seasonNumber) {
-        ArrayList<Parameter> params = new ArrayList<Parameter>();
+        ArrayList<Parameter> params = new ArrayList<>();
         params.add(new Parameter("i", imdbID));
         params.add(new Parameter("season", seasonNumber));
         try {
@@ -83,7 +83,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public Season getSeasonByTitle(String title, String seasonNumber) {
-        ArrayList<Parameter> params = new ArrayList<Parameter>();
+        ArrayList<Parameter> params = new ArrayList<>();
         params.add(new Parameter("t", title));
         params.add(new Parameter("season", seasonNumber));
         try {
