@@ -4,6 +4,8 @@ import me.shib.java.lib.common.utils.JsonLib;
 
 public class OMDbContent {
 
+    private static JsonLib jsonLib = new JsonLib();
+
     private String imdbID;
     private String title;
     private String year;
@@ -164,26 +166,26 @@ public class OMDbContent {
         this.response = (oc1.response || oc2.response);
     }
 
-    public Movie getMovieObject() {
+    public Movie getMovie() {
         if (type == Type.movie) {
-            String jsonData = JsonLib.getDefaultInstance().toJson(this);
-            return JsonLib.getDefaultInstance().fromJson(jsonData, Movie.class);
+            String jsonData = jsonLib.toJson(this);
+            return jsonLib.fromJson(jsonData, Movie.class);
         }
         return null;
     }
 
-    public Series getSeriesObject() {
+    public Series getSeries() {
         if (type == Type.series) {
-            String jsonData = JsonLib.getDefaultInstance().toJson(this);
-            return JsonLib.getDefaultInstance().fromJson(jsonData, Series.class);
+            String jsonData = jsonLib.toJson(this);
+            return jsonLib.fromJson(jsonData, Series.class);
         }
         return null;
     }
 
-    public Episode getEpisodeObject() {
+    public Episode getEpisode() {
         if (type == Type.episode) {
-            String jsonData = JsonLib.getDefaultInstance().toJson(this);
-            return JsonLib.getDefaultInstance().fromJson(jsonData, Episode.class);
+            String jsonData = jsonLib.toJson(this);
+            return jsonLib.fromJson(jsonData, Episode.class);
         }
         return null;
     }
