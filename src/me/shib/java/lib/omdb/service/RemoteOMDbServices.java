@@ -6,10 +6,13 @@ import me.shib.java.lib.rest.client.Parameter;
 import me.shib.java.lib.rest.client.ServiceAdapter;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class RemoteOMDbServices implements OMDbServiceModel {
 
     private static final String omdbEndpoint = "http://www.omdbapi.com/";
+
+    private static Logger logger = Logger.getLogger(RemoteOMDbServices.class.getName());
 
     private JsonLib jsonLib;
     private ServiceAdapter serviceAdapter;
@@ -28,6 +31,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
                 return oc;
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getOMDbContentForJson", e);
         }
         return null;
     }
@@ -38,6 +42,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
         try {
             return getOMDbContentForJson(serviceAdapter.get(null, params).getResponse());
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getContentByID", e);
         }
         return null;
     }
@@ -48,6 +53,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
         try {
             return getOMDbContentForJson(serviceAdapter.get(null, params).getResponse());
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getContentByTitle", e);
         }
         return null;
     }
@@ -71,6 +77,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
                 return isr.getSearchResponse().getSearchResults();
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "searchContent", e);
         }
         return null;
     }
@@ -85,6 +92,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
                 return iso.getSeasonObject();
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getSeasonByID", e);
         }
         return null;
     }
@@ -99,6 +107,7 @@ public class RemoteOMDbServices implements OMDbServiceModel {
                 return iso.getSeasonObject();
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getSeasonByTitle", e);
         }
         return null;
     }

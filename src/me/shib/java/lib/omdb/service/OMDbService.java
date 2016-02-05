@@ -26,7 +26,7 @@ public class OMDbService implements OMDbServiceModel {
         jsonLib = new JsonLib();
         remoteServices = new RemoteOMDbServices(jsonLib);
         if (localCacheRenewalIntervalInMinutes > 0) {
-            LocalFileCache localCache = new LocalFileCache(localCacheRenewalIntervalInMinutes, localCacheDirectoryName);
+            LocalFileCache localCache = new LocalFileCache(localCacheRenewalIntervalInMinutes, localCacheDirectoryName, true);
             localServices = new LocalCacheOMDbServices(localCache, jsonLib);
         } else {
             localServices = null;

@@ -11,6 +11,6 @@ Add to your `pom.xml`
 <dependency>
 	<groupId>me.shib.java.lib</groupId>
 	<artifactId>omdb-java</artifactId>
-	<version>1.1</version>
+	<version>1.1.1</version>
 </dependency>
 ```

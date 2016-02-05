@@ -4,7 +4,11 @@ import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.common.utils.LocalFileCache;
 import me.shib.java.lib.omdb.models.*;
 
+import java.util.logging.Logger;
+
 public class LocalCacheOMDbServices implements OMDbServiceModel {
+
+    private static Logger logger = Logger.getLogger(LocalCacheOMDbServices.class.getName());
 
     private JsonLib jsonLib;
     private LocalFileCache localCache;
@@ -21,6 +25,7 @@ public class LocalCacheOMDbServices implements OMDbServiceModel {
                 return jsonLib.fromJson(fileData, OMDbContent.class);
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getContentByID", e);
         }
         return null;
     }
@@ -38,6 +43,7 @@ public class LocalCacheOMDbServices implements OMDbServiceModel {
                 return jsonLib.fromJson(fileData, OMDbContent.class);
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getContentByTitle", e);
         }
         return null;
     }
@@ -60,6 +66,7 @@ public class LocalCacheOMDbServices implements OMDbServiceModel {
                 return jsonLib.fromJson(fileData, Season.class);
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getSeasonByID", e);
         }
         return null;
     }
@@ -79,6 +86,7 @@ public class LocalCacheOMDbServices implements OMDbServiceModel {
                 return jsonLib.fromJson(fileData, Season.class);
             }
         } catch (Exception e) {
+            logger.throwing(this.getClass().getName(), "getSeasonByTitle", e);
         }
         return null;
     }
