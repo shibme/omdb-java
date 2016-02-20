@@ -2,9 +2,9 @@ package me.shib.java.lib.omdb.models;
 
 import me.shib.java.lib.common.utils.JsonLib;
 
-public class OMDbContent {
+public final class OMDbContent {
 
-    private static JsonLib jsonLib = new JsonLib();
+    private static final JsonLib jsonLib = new JsonLib();
 
     private String imdbID;
     private String title;

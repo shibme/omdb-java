@@ -4,7 +4,7 @@ import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.SearchResponse;
 import me.shib.java.lib.omdb.models.SearchResult;
 
-public class IntermediateSearchResponseObject {
+public final class IntermediateSearchResponseObject {
 
     private Object[] search;
     private SearchResult[] results;

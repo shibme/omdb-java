@@ -4,7 +4,7 @@ import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.MiniEpisode;
 import me.shib.java.lib.omdb.models.Season;
 
-public class IntermediateSeasonObject {
+public final class IntermediateSeasonObject {
 
     private String title;
     private String season;

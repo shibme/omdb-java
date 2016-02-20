@@ -6,7 +6,7 @@ import me.shib.java.lib.omdb.models.*;
 
 import java.util.logging.Logger;
 
-public class LocalCacheOMDbServices implements OMDbServiceModel {
+public final class LocalCacheOMDbServices implements OMDbServiceModel {
 
     private static Logger logger = Logger.getLogger(LocalCacheOMDbServices.class.getName());
 

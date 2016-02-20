@@ -1,6 +1,6 @@
 package me.shib.java.lib.omdb.models;
 
-public class SearchResponse {
+public final class SearchResponse {
 
     private SearchResult[] search;
 

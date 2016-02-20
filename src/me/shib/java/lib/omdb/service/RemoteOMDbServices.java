@@ -8,7 +8,7 @@ import me.shib.java.lib.rest.client.ServiceAdapter;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class RemoteOMDbServices implements OMDbServiceModel {
+public final class RemoteOMDbServices implements OMDbServiceModel {
 
     private static final String omdbEndpoint = "http://www.omdbapi.com/";
 

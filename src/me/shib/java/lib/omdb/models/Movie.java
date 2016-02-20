@@ -1,6 +1,6 @@
 package me.shib.java.lib.omdb.models;
 
-public class Movie {
+public final class Movie {
 
     private String imdbID;
     private String title;

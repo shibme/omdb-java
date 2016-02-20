@@ -2,7 +2,7 @@ package me.shib.java.lib.omdb.models;
 
 import java.util.Arrays;
 
-public class Season {
+public final class Season {
 
     private String title;
     private String season;

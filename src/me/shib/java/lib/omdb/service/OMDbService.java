@@ -4,7 +4,7 @@ import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.common.utils.LocalFileCache;
 import me.shib.java.lib.omdb.models.*;
 
-public class OMDbService implements OMDbServiceModel {
+public final class OMDbService implements OMDbServiceModel {
 
     private JsonLib jsonLib;
     private RemoteOMDbServices remoteServices;
