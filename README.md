@@ -6,7 +6,7 @@
 
 A Java library for the [OMDb API](http://www.omdbapi.com)
 
-### Maven Dependency for Consumers ###
+### Maven Dependency for Consumers
 Add to your `pom.xml`
 ```xml
 <dependency>
