@@ -32,6 +32,9 @@ public class SearchResult {
         } else {
             this.poster = result2.poster;
         }
+        if ((this.poster != null) && (this.poster.equalsIgnoreCase("N/A"))) {
+            this.poster = null;
+        }
 
         if (result1.type != null) {
             this.type = result1.type;

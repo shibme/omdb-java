@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public final class LocalCacheOMDbServices implements OMDbServiceModel {
 
-    private static Logger logger = Logger.getLogger(LocalCacheOMDbServices.class.getName());
+    private static final Logger logger = Logger.getLogger(LocalCacheOMDbServices.class.getName());
 
     private JsonLib jsonLib;
     private LocalFileCache localCache;

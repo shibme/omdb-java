@@ -132,6 +132,9 @@ public final class OMDbContent {
         } else {
             this.poster = oc2.poster;
         }
+        if ((this.poster != null) && (this.poster.equalsIgnoreCase("N/A"))) {
+            this.poster = null;
+        }
 
         if (oc1.metascore != null) {
             this.metascore = oc1.metascore;
