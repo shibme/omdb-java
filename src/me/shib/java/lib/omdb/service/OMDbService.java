@@ -4,11 +4,15 @@ import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.common.utils.LocalFileCache;
 import me.shib.java.lib.omdb.models.*;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public final class OMDbService implements OMDbServiceModel {
 
-    private JsonLib jsonLib;
     private RemoteOMDbServices remoteServices;
     private LocalCacheOMDbServices localServices;
+    private LocalFileCache localFileCache;
 
     public OMDbService(long localCacheRenewalIntervalInMinutes, String localCacheDirectoryName) {
         initOMDBService(localCacheRenewalIntervalInMinutes, localCacheDirectoryName);
@@ -23,11 +27,11 @@ public final class OMDbService implements OMDbServiceModel {
     }
 
     private void initOMDBService(long localCacheRenewalIntervalInMinutes, String localCacheDirectoryName) {
-        jsonLib = new JsonLib();
+        JsonLib jsonLib = new JsonLib();
         remoteServices = new RemoteOMDbServices(jsonLib);
         if (localCacheRenewalIntervalInMinutes > 0) {
-            LocalFileCache localCache = new LocalFileCache(localCacheRenewalIntervalInMinutes, localCacheDirectoryName, true);
-            localServices = new LocalCacheOMDbServices(localCache, jsonLib);
+            localFileCache = new LocalFileCache(localCacheRenewalIntervalInMinutes, localCacheDirectoryName, true);
+            localServices = new LocalCacheOMDbServices(localFileCache, jsonLib);
         } else {
             localServices = null;
         }
@@ -116,6 +120,16 @@ public final class OMDbService implements OMDbServiceModel {
             localServices.setSeasonByTitle(title, returnableSeason);
         }
         return returnableSeason;
+    }
+
+    public synchronized File getLocalCacheBackupFile() {
+        File localCacheBackupFile = null;
+        if (localFileCache != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-M-dd-hh-mm-ss");
+            String date = sdf.format(new Date());
+            localCacheBackupFile = localFileCache.getLocalCacheBackup(new File("OMDbLocalCache-" + date + ".zip"));
+        }
+        return localCacheBackupFile;
     }
 
 }

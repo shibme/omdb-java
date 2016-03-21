@@ -6,14 +6,14 @@ import me.shib.java.lib.omdb.models.*;
 
 import java.util.logging.Logger;
 
-public final class LocalCacheOMDbServices implements OMDbServiceModel {
+final class LocalCacheOMDbServices implements OMDbServiceModel {
 
     private static final Logger logger = Logger.getLogger(LocalCacheOMDbServices.class.getName());
 
     private JsonLib jsonLib;
     private LocalFileCache localCache;
 
-    protected LocalCacheOMDbServices(LocalFileCache localCache, JsonLib jsonLib) {
+    LocalCacheOMDbServices(LocalFileCache localCache, JsonLib jsonLib) {
         this.localCache = localCache;
         this.jsonLib = jsonLib;
     }
@@ -30,7 +30,7 @@ public final class LocalCacheOMDbServices implements OMDbServiceModel {
         return null;
     }
 
-    protected void setContentByID(OMDbContent content) {
+    void setContentByID(OMDbContent content) {
         if (content != null) {
             localCache.putDataForKey("id", content.getImdbID().toLowerCase(), jsonLib.toJson(content));
         }
@@ -53,7 +53,7 @@ public final class LocalCacheOMDbServices implements OMDbServiceModel {
         return null;
     }
 
-    protected void setContentByTitle(OMDbContent content) {
+    void setContentByTitle(OMDbContent content) {
         if (content != null) {
             localCache.putDataForKey("title", content.getTitle().toLowerCase(), jsonLib.toJson(content));
         }
@@ -71,7 +71,7 @@ public final class LocalCacheOMDbServices implements OMDbServiceModel {
         return null;
     }
 
-    protected void setSeasonByID(String imdbID, Season season) {
+    void setSeasonByID(String imdbID, Season season) {
         if ((imdbID != null) && (!imdbID.isEmpty()) && (season != null)) {
             localCache.putDataForKey("id-SeasonNo",
                     imdbID.toLowerCase() + "-" + season.getSeason().toLowerCase(),
@@ -91,7 +91,7 @@ public final class LocalCacheOMDbServices implements OMDbServiceModel {
         return null;
     }
 
-    protected void setSeasonByTitle(String title, Season season) {
+    void setSeasonByTitle(String title, Season season) {
         if ((title != null) && (!title.isEmpty()) && (season != null)) {
             localCache.putDataForKey("title-SeasonNo",
                     title.toLowerCase() + "-" + season.getSeason().toLowerCase(),
