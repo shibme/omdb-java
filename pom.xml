@@ -147,8 +147,8 @@
     <dependencies>
         <dependency>
             <groupId>me.shib.java.lib</groupId>
-            <artifactId>rest-client-java</artifactId>
-            <version>0.4.1</version>
+            <artifactId>restiny</artifactId>
+            <version>0.1.0</version>
         </dependency>
     </dependencies>
 

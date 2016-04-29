@@ -2,10 +2,9 @@ package me.shib.java.lib.omdb.service;
 
 import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.*;
-import me.shib.java.lib.rest.client.Parameter;
-import me.shib.java.lib.rest.client.ServiceAdapter;
+import me.shib.java.lib.restiny.RESTinyClient;
+import me.shib.java.lib.restiny.requests.GET;
 
-import java.util.ArrayList;
 import java.util.logging.Logger;
 
 final class RemoteOMDbServices implements OMDbServiceModel {
@@ -15,11 +14,11 @@ final class RemoteOMDbServices implements OMDbServiceModel {
     private static Logger logger = Logger.getLogger(RemoteOMDbServices.class.getName());
 
     private JsonLib jsonLib;
-    private ServiceAdapter serviceAdapter;
+    private RESTinyClient resTinyClient;
 
     RemoteOMDbServices(JsonLib jsonLib) {
         this.jsonLib = jsonLib;
-        this.serviceAdapter = new ServiceAdapter(omdbEndpoint);
+        this.resTinyClient = new RESTinyClient(omdbEndpoint);
     }
 
     private OMDbContent getOMDbContentForJson(String jsonData) {
@@ -37,10 +36,10 @@ final class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public OMDbContent getContentByID(String imdbID) {
-        ArrayList<Parameter> params = new ArrayList<>();
-        params.add(new Parameter("i", imdbID));
+        GET getRequest = new GET(null);
+        getRequest.addParameter("i", imdbID);
         try {
-            return getOMDbContentForJson(serviceAdapter.get(null, params).getResponse());
+            return getOMDbContentForJson(resTinyClient.call(getRequest).getResponse());
         } catch (Exception e) {
             logger.throwing(this.getClass().getName(), "getContentByID", e);
         }
@@ -48,10 +47,10 @@ final class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public OMDbContent getContentByTitle(String title) {
-        ArrayList<Parameter> params = new ArrayList<>();
-        params.add(new Parameter("t", title));
+        GET getRequest = new GET(null);
+        getRequest.addParameter("t", title);
         try {
-            return getOMDbContentForJson(serviceAdapter.get(null, params).getResponse());
+            return getOMDbContentForJson(resTinyClient.call(getRequest).getResponse());
         } catch (Exception e) {
             logger.throwing(this.getClass().getName(), "getContentByTitle", e);
         }
@@ -60,19 +59,19 @@ final class RemoteOMDbServices implements OMDbServiceModel {
 
     @Override
     public SearchResult[] searchContent(String title, Type type, int year, int pageNo) {
-        ArrayList<Parameter> params = new ArrayList<>();
-        params.add(new Parameter("s", title));
+        GET getRequest = new GET(null);
+        getRequest.addParameter("s", title);
         if (type != null) {
-            params.add(new Parameter("type", type.toString()));
+            getRequest.addParameter("type", type.toString());
         }
         if (year > 0) {
-            params.add(new Parameter("y", year + ""));
+            getRequest.addParameter("y", year + "");
         }
         if (pageNo > 0) {
-            params.add(new Parameter("page", pageNo + ""));
+            getRequest.addParameter("page", pageNo + "");
         }
         try {
-            IntermediateSearchResponseObject isr = jsonLib.fromUpperCamelCaseJson(serviceAdapter.get(null, params).getResponse(), IntermediateSearchResponseObject.class);
+            IntermediateSearchResponseObject isr = jsonLib.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSearchResponseObject.class);
             if (isr != null) {
                 return isr.getSearchResponse().getSearchResults();
             }
@@ -83,11 +82,11 @@ final class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public Season getSeasonByID(String imdbID, String seasonNumber) {
-        ArrayList<Parameter> params = new ArrayList<>();
-        params.add(new Parameter("i", imdbID));
-        params.add(new Parameter("season", seasonNumber));
+        GET getRequest = new GET(null);
+        getRequest.addParameter("i", imdbID);
+        getRequest.addParameter("season", seasonNumber);
         try {
-            IntermediateSeasonObject iso = jsonLib.fromUpperCamelCaseJson(serviceAdapter.get(null, params).getResponse(), IntermediateSeasonObject.class);
+            IntermediateSeasonObject iso = jsonLib.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSeasonObject.class);
             if (iso != null) {
                 return iso.getSeasonObject();
             }
@@ -98,11 +97,11 @@ final class RemoteOMDbServices implements OMDbServiceModel {
     }
 
     public Season getSeasonByTitle(String title, String seasonNumber) {
-        ArrayList<Parameter> params = new ArrayList<>();
-        params.add(new Parameter("t", title));
-        params.add(new Parameter("season", seasonNumber));
+        GET getRequest = new GET(null);
+        getRequest.addParameter("t", title);
+        getRequest.addParameter("season", seasonNumber);
         try {
-            IntermediateSeasonObject iso = jsonLib.fromUpperCamelCaseJson(serviceAdapter.get(null, params).getResponse(), IntermediateSeasonObject.class);
+            IntermediateSeasonObject iso = jsonLib.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSeasonObject.class);
             if (iso != null) {
                 return iso.getSeasonObject();
             }
