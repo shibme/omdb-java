@@ -1,8 +1,8 @@
 package me.shib.java.lib.omdb.service;
 
-import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.SearchResponse;
 import me.shib.java.lib.omdb.models.SearchResult;
+import me.shib.java.lib.restiny.util.JsonUtil;
 
 public final class IntermediateSearchResponseObject {
 
@@ -10,10 +10,10 @@ public final class IntermediateSearchResponseObject {
     private SearchResult[] results;
 
     private SearchResult getCorrectedResult(Object searchObject) {
-        JsonLib jsonLib = new JsonLib();
-        String jsonData = jsonLib.toJson(searchObject);
-        SearchResult result1 = jsonLib.fromJson(jsonData, SearchResult.class);
-        SearchResult result2 = jsonLib.fromUpperCamelCaseJson(jsonData, SearchResult.class);
+        JsonUtil jsonUtil = new JsonUtil();
+        String jsonData = jsonUtil.toJson(searchObject);
+        SearchResult result1 = jsonUtil.fromJson(jsonData, SearchResult.class);
+        SearchResult result2 = jsonUtil.fromUpperCamelCaseJson(jsonData, SearchResult.class);
         return new SearchResult(result1, result2);
     }
 

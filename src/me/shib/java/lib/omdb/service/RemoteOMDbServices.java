@@ -1,9 +1,9 @@
 package me.shib.java.lib.omdb.service;
 
-import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.*;
 import me.shib.java.lib.restiny.RESTinyClient;
 import me.shib.java.lib.restiny.requests.GET;
+import me.shib.java.lib.restiny.util.JsonUtil;
 
 import java.util.logging.Logger;
 
@@ -13,18 +13,18 @@ final class RemoteOMDbServices implements OMDbServiceModel {
 
     private static Logger logger = Logger.getLogger(RemoteOMDbServices.class.getName());
 
-    private JsonLib jsonLib;
+    private JsonUtil jsonUtil;
     private RESTinyClient resTinyClient;
 
-    RemoteOMDbServices(JsonLib jsonLib) {
-        this.jsonLib = jsonLib;
+    RemoteOMDbServices(JsonUtil jsonUtil) {
+        this.jsonUtil = jsonUtil;
         this.resTinyClient = new RESTinyClient(omdbEndpoint);
     }
 
     private OMDbContent getOMDbContentForJson(String jsonData) {
         try {
-            OMDbContent normalParsedObj = jsonLib.fromJson(jsonData, OMDbContent.class);
-            OMDbContent upperCaseParsedObj = jsonLib.fromUpperCamelCaseJson(jsonData, OMDbContent.class);
+            OMDbContent normalParsedObj = jsonUtil.fromJson(jsonData, OMDbContent.class);
+            OMDbContent upperCaseParsedObj = jsonUtil.fromUpperCamelCaseJson(jsonData, OMDbContent.class);
             OMDbContent oc = new OMDbContent(normalParsedObj, upperCaseParsedObj);
             if (oc.isResponse()) {
                 return oc;
@@ -71,7 +71,7 @@ final class RemoteOMDbServices implements OMDbServiceModel {
             getRequest.addParameter("page", pageNo + "");
         }
         try {
-            IntermediateSearchResponseObject isr = jsonLib.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSearchResponseObject.class);
+            IntermediateSearchResponseObject isr = jsonUtil.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSearchResponseObject.class);
             if (isr != null) {
                 return isr.getSearchResponse().getSearchResults();
             }
@@ -86,7 +86,7 @@ final class RemoteOMDbServices implements OMDbServiceModel {
         getRequest.addParameter("i", imdbID);
         getRequest.addParameter("season", seasonNumber);
         try {
-            IntermediateSeasonObject iso = jsonLib.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSeasonObject.class);
+            IntermediateSeasonObject iso = jsonUtil.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSeasonObject.class);
             if (iso != null) {
                 return iso.getSeasonObject();
             }
@@ -101,7 +101,7 @@ final class RemoteOMDbServices implements OMDbServiceModel {
         getRequest.addParameter("t", title);
         getRequest.addParameter("season", seasonNumber);
         try {
-            IntermediateSeasonObject iso = jsonLib.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSeasonObject.class);
+            IntermediateSeasonObject iso = jsonUtil.fromUpperCamelCaseJson(resTinyClient.call(getRequest).getResponse(), IntermediateSeasonObject.class);
             if (iso != null) {
                 return iso.getSeasonObject();
             }

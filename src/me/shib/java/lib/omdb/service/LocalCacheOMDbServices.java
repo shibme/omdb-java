@@ -1,8 +1,8 @@
 package me.shib.java.lib.omdb.service;
 
-import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.common.utils.LocalFileCache;
 import me.shib.java.lib.omdb.models.*;
+import me.shib.java.lib.restiny.util.JsonUtil;
 
 import java.util.logging.Logger;
 
@@ -10,19 +10,19 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
 
     private static final Logger logger = Logger.getLogger(LocalCacheOMDbServices.class.getName());
 
-    private JsonLib jsonLib;
+    private JsonUtil jsonUtil;
     private LocalFileCache localCache;
 
-    LocalCacheOMDbServices(LocalFileCache localCache, JsonLib jsonLib) {
+    LocalCacheOMDbServices(LocalFileCache localCache, JsonUtil jsonUtil) {
         this.localCache = localCache;
-        this.jsonLib = jsonLib;
+        this.jsonUtil = jsonUtil;
     }
 
     public OMDbContent getContentByID(String imdbID) {
         try {
             String fileData = localCache.getDataforKey("id", imdbID.toLowerCase());
             if (fileData != null) {
-                return jsonLib.fromJson(fileData, OMDbContent.class);
+                return jsonUtil.fromJson(fileData, OMDbContent.class);
             }
         } catch (Exception e) {
             logger.throwing(this.getClass().getName(), "getContentByID", e);
@@ -32,7 +32,7 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
 
     void setContentByID(OMDbContent content) {
         if (content != null) {
-            localCache.putDataForKey("id", content.getImdbID().toLowerCase(), jsonLib.toJson(content));
+            localCache.putDataForKey("id", content.getImdbID().toLowerCase(), jsonUtil.toJson(content));
         }
     }
 
@@ -40,7 +40,7 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
         try {
             String fileData = localCache.getDataforKey("title", title.toLowerCase());
             if (fileData != null) {
-                return jsonLib.fromJson(fileData, OMDbContent.class);
+                return jsonUtil.fromJson(fileData, OMDbContent.class);
             }
         } catch (Exception e) {
             logger.throwing(this.getClass().getName(), "getContentByTitle", e);
@@ -55,7 +55,7 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
 
     void setContentByTitle(OMDbContent content) {
         if (content != null) {
-            localCache.putDataForKey("title", content.getTitle().toLowerCase(), jsonLib.toJson(content));
+            localCache.putDataForKey("title", content.getTitle().toLowerCase(), jsonUtil.toJson(content));
         }
     }
 
@@ -63,7 +63,7 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
         try {
             String fileData = localCache.getDataforKey("id-SeasonNo", imdbID.toLowerCase() + "-" + seasonNumber.toLowerCase());
             if (fileData != null) {
-                return jsonLib.fromJson(fileData, Season.class);
+                return jsonUtil.fromJson(fileData, Season.class);
             }
         } catch (Exception e) {
             logger.throwing(this.getClass().getName(), "getSeasonByID", e);
@@ -75,7 +75,7 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
         if ((imdbID != null) && (!imdbID.isEmpty()) && (season != null)) {
             localCache.putDataForKey("id-SeasonNo",
                     imdbID.toLowerCase() + "-" + season.getSeason().toLowerCase(),
-                    jsonLib.toJson(season));
+                    jsonUtil.toJson(season));
         }
     }
 
@@ -83,7 +83,7 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
         try {
             String fileData = localCache.getDataforKey("title-SeasonNo", title.toLowerCase() + "-" + seasonNumber.toLowerCase());
             if (fileData != null) {
-                return jsonLib.fromJson(fileData, Season.class);
+                return jsonUtil.fromJson(fileData, Season.class);
             }
         } catch (Exception e) {
             logger.throwing(this.getClass().getName(), "getSeasonByTitle", e);
@@ -95,7 +95,7 @@ final class LocalCacheOMDbServices implements OMDbServiceModel {
         if ((title != null) && (!title.isEmpty()) && (season != null)) {
             localCache.putDataForKey("title-SeasonNo",
                     title.toLowerCase() + "-" + season.getSeason().toLowerCase(),
-                    jsonLib.toJson(season));
+                    jsonUtil.toJson(season));
         }
     }
 

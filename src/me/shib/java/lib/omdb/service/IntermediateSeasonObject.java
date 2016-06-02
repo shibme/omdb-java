@@ -1,8 +1,8 @@
 package me.shib.java.lib.omdb.service;
 
-import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.omdb.models.MiniEpisode;
 import me.shib.java.lib.omdb.models.Season;
+import me.shib.java.lib.restiny.util.JsonUtil;
 
 public final class IntermediateSeasonObject {
 
@@ -12,10 +12,10 @@ public final class IntermediateSeasonObject {
     private MiniEpisode[] miniEpisodeList;
 
     private MiniEpisode getCorrectedMiniEpisode(Object miniEpisodeObject) {
-        JsonLib jsonLib = new JsonLib();
-        String jsonData = jsonLib.toJson(miniEpisodeObject);
-        MiniEpisode result1 = jsonLib.fromJson(jsonData, MiniEpisode.class);
-        MiniEpisode result2 = jsonLib.fromUpperCamelCaseJson(jsonData, MiniEpisode.class);
+        JsonUtil jsonUtil = new JsonUtil();
+        String jsonData = jsonUtil.toJson(miniEpisodeObject);
+        MiniEpisode result1 = jsonUtil.fromJson(jsonData, MiniEpisode.class);
+        MiniEpisode result2 = jsonUtil.fromUpperCamelCaseJson(jsonData, MiniEpisode.class);
         return new MiniEpisode(result1, result2);
     }
 

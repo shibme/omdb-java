@@ -1,8 +1,8 @@
 package me.shib.java.lib.omdb.service;
 
-import me.shib.java.lib.common.utils.JsonLib;
 import me.shib.java.lib.common.utils.LocalFileCache;
 import me.shib.java.lib.omdb.models.*;
+import me.shib.java.lib.restiny.util.JsonUtil;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -27,11 +27,11 @@ public final class OMDbService implements OMDbServiceModel {
     }
 
     private void initOMDBService(long localCacheRenewalIntervalInMinutes, String localCacheDirectoryName) {
-        JsonLib jsonLib = new JsonLib();
-        remoteServices = new RemoteOMDbServices(jsonLib);
+        JsonUtil jsonUtil = new JsonUtil();
+        remoteServices = new RemoteOMDbServices(jsonUtil);
         if (localCacheRenewalIntervalInMinutes > 0) {
             localFileCache = new LocalFileCache(localCacheRenewalIntervalInMinutes, localCacheDirectoryName, true);
-            localServices = new LocalCacheOMDbServices(localFileCache, jsonLib);
+            localServices = new LocalCacheOMDbServices(localFileCache, jsonUtil);
         } else {
             localServices = null;
         }
